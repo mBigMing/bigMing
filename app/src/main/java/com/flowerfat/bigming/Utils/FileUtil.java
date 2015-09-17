@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class FileJson {
+public class FileUtil {
     /**
      * 创建文件
      *
