@@ -1,4 +1,4 @@
-package com.flowerfat.bigming.Utils;
+package com.flowerfat.utiltool.Utils;
 
 import android.content.Context;
 import android.util.Log;
