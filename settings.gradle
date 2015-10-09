@@ -1,2 +1,1 @@
-include ':utiltool'
-include 'app'
+include ':utiltool', ':app'
