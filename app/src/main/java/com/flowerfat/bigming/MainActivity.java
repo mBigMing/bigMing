@@ -8,12 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.flowerfat.utiltool.Utils.ContactsUtil;
+import com.flowerfat.utiltool.Utils.NotificationUtil;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
-    GestureDetector mGestureDetector ;
+    GestureDetector mGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,20 +23,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-    public void buttonClick(View v){
-        if(v.getId() == R.id.notification){
+    public void buttonClick(View v) {
+        if (v.getId() == R.id.notification) {
             notification();
-        } else if(v.getId() == R.id.contacts){
+        } else if (v.getId() == R.id.contacts) {
             contacts();
         }
     }
-    private void notification(){
 
+    private void notification() {
+        new NotificationUtil(this).show(ActivityB.class, "ticker", "标题", "内容", R.drawable.ic_launcher);
     }
-    private void contacts(){
+
+    private void contacts() {
         // 查询
 //        ContactsUtil.getPhoneContacts(this);
         // 插入
