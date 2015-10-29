@@ -2,12 +2,6 @@ package com.flowerfat.utiltool.Utils;
 
 import android.content.Context;
 
-/**
- * Created by 明明大美女 on 2015/9/28.
- *
- * 定时器
- * 广播的形式，所以需要注册一个广播接收，用来做定时之后的事儿~
- */
 public class AlarmUtil {
 
     public void Once(Context context){

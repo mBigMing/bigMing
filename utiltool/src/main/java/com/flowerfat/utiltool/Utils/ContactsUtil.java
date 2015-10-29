@@ -15,14 +15,9 @@ import android.provider.ContactsContract.RawContacts;
 import android.util.Log;
 
 /**
- * Created by 明明大美女 on 2015/10/8.
- * <p/>
- * 权限要求：
- * 写权限  android:name="android.permission.WRITE_CONTACTS"
- * 读权限  android:name="android.permission.READ_CONTACTS"
- * <p/>
- * 教程：
- * http://www.imooc.com/video/4041
+ * 1. permission
+ *
+ * 2. lesson：http://www.imooc.com/video/4041
  */
 public class ContactsUtil {
 
@@ -72,23 +67,22 @@ public class ContactsUtil {
     }
 
     /**
-     * 向联系人中插入一行数据
-     * 重复插入无效（即用了两次该函数，具体哪里的锅不晓得）
-     * @param context
+     * insert
+     * @param context nothing
      */
     public static void insertAContact(Context context){
         ContentResolver cr = context.getContentResolver();
-        // 向联系人中插入一行数据
+        // insert one data into the contact
         ContentValues values = new ContentValues();
         Uri uri = cr.insert(RawContacts.CONTENT_URI, values);
         Long raw_contact_id = ContentUris.parseId(uri);
         values.clear();
-        // 插入人名
+        // insert the name
         values.put(StructuredName.RAW_CONTACT_ID, raw_contact_id);
-        values.put(StructuredName.DISPLAY_NAME, "张三");
+        values.put(StructuredName.DISPLAY_NAME, "Name");
         values.put(StructuredName.MIMETYPE, StructuredName.CONTENT_ITEM_TYPE);
         cr.insert(Data.CONTENT_URI, values);
-        // 插入电话信息
+        // insert the phone
         values.clear();
         values.put(Phone.RAW_CONTACT_ID, raw_contact_id);
         values.put(Phone.NUMBER, "13888888888");
