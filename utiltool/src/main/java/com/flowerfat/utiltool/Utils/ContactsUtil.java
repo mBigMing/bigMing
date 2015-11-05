@@ -21,9 +21,12 @@ import android.util.Log;
  */
 public class ContactsUtil {
 
+    private ContactsUtil mContactsUtil ;
+
     public ContactsUtil() {
 
     }
+
 
     public static void getPhoneContacts(Context context) {
         ContentResolver cr = context.getContentResolver();
@@ -89,5 +92,6 @@ public class ContactsUtil {
         values.put(Phone.MIMETYPE, Phone.CONTENT_ITEM_TYPE);
         cr.insert(Data.CONTENT_URI, values);
     }
+
 
 }

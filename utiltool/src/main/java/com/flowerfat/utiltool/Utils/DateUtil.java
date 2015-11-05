@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -23,6 +24,24 @@ public class DateUtil {
     public static String getDate(String dateMode) {
         SimpleDateFormat format = new SimpleDateFormat(dateMode);
         return format.format(new Date());
+    }
+
+    public static String yesterday(String dateMode){
+        SimpleDateFormat format = new SimpleDateFormat(dateMode);
+        return format.format(shifting(new Date(), -1));
+    }
+
+    /**
+     * get
+     * @param date 基准日期
+     * @param offsite >0 means add, and <0 means
+     * @return 偏移后的日期
+     */
+    public static Date shifting(Date date, int offsite){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, offsite);
+        return cal.getTime();
     }
 
     /**
