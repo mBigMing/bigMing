@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.flowerfat.utiltool.Utils.AlarmUtil;
 import com.flowerfat.utiltool.Utils.ContactsUtil;
 import com.flowerfat.utiltool.Utils.NotificationUtil;
 
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
             notification();
         } else if (v.getId() == R.id.contacts) {
             contacts();
+        } else if (v.getId() == R.id.alarm) {
+            Alarm();
         }
     }
 
@@ -40,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
 //        ContactsUtil.getPhoneContacts(this);
         // 插入
         ContactsUtil.insertAContact(this);
+    }
+
+    private void Alarm(){
+        AlarmUtil alarm = new AlarmUtil(this);
+        alarm.OnceSecond(5);
+        alarm.Cancel(122);
     }
 
 
