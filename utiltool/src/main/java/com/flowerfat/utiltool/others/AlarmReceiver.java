@@ -12,7 +12,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("onReceive", "the time is up,start the alarm...");
-        Toast.makeText(context, "闹钟时间到了！", Toast.LENGTH_SHORT).show();
+        Log.e("onReceive", "啥情况？");
+        Log.i("onReceive", "the time is up,start the alarm...");
+        Toast.makeText(context, "闹钟！", Toast.LENGTH_SHORT).show();
     }
 }

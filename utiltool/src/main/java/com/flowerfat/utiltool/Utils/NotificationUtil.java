@@ -26,7 +26,7 @@ public class NotificationUtil {
     public void show(Class toActivity, String ticker, String title, String content, int Icon) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext);
         builder
-            .setSmallIcon(R.drawable.ic_launcher) // small icon, 24×24，against with setLargeIcon(Bitmap icon)
+            .setSmallIcon(Icon) // small icon, 24×24，against with setLargeIcon(Bitmap icon)
             .setContentTitle(title)
             .setContentText(content)
             .setTicker(ticker)// set the text shown on the status bar

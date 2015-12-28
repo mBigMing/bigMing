@@ -2,6 +2,7 @@ package com.flowerfat.bigming;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,12 +43,16 @@ public class MainActivity extends AppCompatActivity {
         // 查询
 //        ContactsUtil.getPhoneContacts(this);
         // 插入
-        ContactsUtil.insertAContact(this);
+//        ContactsUtil.insertAContact(this);
+
+
+
     }
 
     private void Alarm(){
+        Log.e("Alarm", "begin");
         AlarmUtil alarm = new AlarmUtil(this);
-        alarm.OnceSecond(5);
+        alarm.OnceSecond(7);
         alarm.Cancel(122);
     }
 

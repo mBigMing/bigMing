@@ -125,6 +125,36 @@ public class PictureUtil {
         return BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
     }
 
+    public static Bitmap compress(String imgPath) {
+        BitmapFactory.Options newOpts = new BitmapFactory.Options();
+        newOpts.inJustDecodeBounds = true;// 只读边,不读内容
+        Bitmap bitmap = BitmapFactory.decodeFile(imgPath, newOpts);
+//        SoftReference<Bitmap> sr = new SoftReference<Bitmap>(bitmap) ;
+//        bitmap.recycle();
+        newOpts.inJustDecodeBounds = false;
+        int width = newOpts.outWidth;
+        int height = newOpts.outHeight;
+        float maxSize = 1000f;// 默认1000px
+        int be = 1;
+        if (width > height && width > maxSize) {// 缩放比,用高或者宽其中较大的一个数据进行计算
+            be = (int) (newOpts.outWidth / maxSize);
+        } else if (width < height && height > maxSize) {
+            be = (int) (newOpts.outHeight / maxSize);
+        }
+        be++;
+        newOpts.inSampleSize = be;// 设置采样率
+        newOpts.inPreferredConfig = Config.ARGB_8888;// 该模式是默认的,可不设
+        newOpts.inPurgeable = true;// 同时设置才会有效
+        newOpts.inInputShareable = true;// 。当系统内存不够时候图片自动被回收
+        bitmap = BitmapFactory.decodeFile(imgPath, newOpts);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+        bitmap.recycle();
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
+        return BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
+    }
+
     /**
      * add to piclib
      */
